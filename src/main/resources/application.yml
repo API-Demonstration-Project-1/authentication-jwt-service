@@ -1,0 +1,26 @@
+#Setting the logging levels for the service
+spring:
+   redis:
+      host: localhost
+      port: 6379
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    com.toystore.ecomm.authentication: DEBUG
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+        defaultZone: http://localhost:8761/eureka/
+        
+server:
+  contextPath: /auth
+  port: 8901
+
+#signing:
+  #key: alteredcarbons1e7
