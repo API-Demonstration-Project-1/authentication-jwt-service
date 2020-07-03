@@ -1,7 +1,6 @@
 package com.toystore.ecomm.authentication.security;
 
 //import com.thoughtmechanix.authentication.config.ServiceConfig;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
