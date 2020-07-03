@@ -1,5 +1,6 @@
 package com.toystore.ecomm.authentication.security;
 
+import org.springframework.beans.factory.annotation.Value;
 //import com.thoughtmechanix.authentication.config.ServiceConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +17,8 @@ public class JWTTokenStoreConfig {
 	/*
 	 * @Autowired private ServiceConfig serviceConfig;
 	 */
+	@Value("${signing.key}")
+	private String signKey;
 
     @Bean
     public TokenStore tokenStore() {
@@ -35,7 +38,7 @@ public class JWTTokenStoreConfig {
     @Bean
     public JwtAccessTokenConverter jwtAccessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        converter.setSigningKey("345345fsdfsf5345");
+        converter.setSigningKey(signKey);
         return converter;
     }
 
