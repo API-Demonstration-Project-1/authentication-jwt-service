@@ -22,13 +22,7 @@ public class JWTOAuth2Config extends AuthorizationServerConfigurerAdapter {
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private UserDetailsService userDetailsService;
-
-    @Autowired
     private TokenStore tokenStore;
-
-    @Autowired
-    private DefaultTokenServices tokenServices;
 
     @Autowired
     private JwtAccessTokenConverter jwtAccessTokenConverter;
@@ -46,8 +40,7 @@ public class JWTOAuth2Config extends AuthorizationServerConfigurerAdapter {
         endpoints.tokenStore(tokenStore)                             //JWT
                  .accessTokenConverter(jwtAccessTokenConverter)       //JWT
                  .tokenEnhancer(tokenEnhancerChain)                   //JWT
-                 .authenticationManager(authenticationManager)
-                 .userDetailsService(userDetailsService);
+                 .authenticationManager(authenticationManager);
     }
 
 
