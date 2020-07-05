@@ -41,20 +41,4 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
 	}
-
-	/*
-	 * @Override protected void configure(AuthenticationManagerBuilder auth) throws
-	 * Exception { auth.inMemoryAuthentication()
-	 * .withUser("john.carnell").password("password1").roles("USER") .and()
-	 * .withUser("authuser").password("authuser").roles("USER", "ADMIN") .and()
-	 * .withUser("william.woodward").password("password2").roles("USER", "ADMIN"); }
-	 */
-
-	/*
-	 * @Override protected void configure(HttpSecurity http) throws Exception { http
-	 * .csrf().disable() .authorizeRequests()
-	 * .antMatchers("/oauth/token").permitAll()
-	 * .antMatchers("/api/users/**").permitAll(); }
-	 */
-
 }
