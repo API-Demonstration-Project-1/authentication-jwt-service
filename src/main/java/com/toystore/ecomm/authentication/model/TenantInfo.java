@@ -6,6 +6,8 @@ import java.util.Objects;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.validation.annotation.Validated;
 
+import com.toystore.ecomm.authentication.model.TenantRoleInfo;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -58,8 +60,11 @@ public class TenantInfo   {
 	 * @OneToMany(mappedBy = "tenant") private List<SubscriptionInfo>
 	 * subscriptionInfoList;
 	 */
-  @OneToOne(mappedBy = "tenantInfo", cascade = CascadeType.ALL, fetch =
-  FetchType.LAZY, optional = false) private TenantDBInfo tenantDBInfo;
+  @OneToOne(mappedBy = "tenantInfo", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false) 
+  private TenantDBInfo tenantDBInfo;
+  
+  @OneToOne(mappedBy = "tenantInfo", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+  private TenantRoleInfo tenantRoleInfo;
 	 
   
   public Integer getTenantId() {
@@ -199,6 +204,14 @@ public void setTenantDBInfo(TenantDBInfo tenantDBInfo) { this.tenantDBInfo =
   tenantDBInfo; }
 	 
 
+public TenantRoleInfo getTenantRoleInfo() {
+	return tenantRoleInfo;
+}
+
+public void setTenantRoleInfo(TenantRoleInfo tenantRoleInfo) {
+	this.tenantRoleInfo = tenantRoleInfo;
+}
+
 public TenantInfo withId(Integer id){
 	    this.setTenantId(id);;
 	    return this;
@@ -253,4 +266,3 @@ public TenantInfo withId(Integer id){
     return o.toString().replace("\n", "\n    ");
   }
 }
-

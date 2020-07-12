@@ -27,10 +27,12 @@ public class JwtUserDetailsService implements UserDetailsService {
         if(null == tenantInfo){
             throw new UsernameNotFoundException("Invalid user name or password.");
         }
-        return new org.springframework.security.core.userdetails.User(tenantInfo.getTenantUsername(), tenantInfo.getTenantPassword(), getAuthority());
+        
+        System.out.println("Current logged user ROLE_" + tenantInfo.getTenantRoleInfo().getRoleName());
+        return new org.springframework.security.core.userdetails.User(tenantInfo.getTenantUsername(), tenantInfo.getTenantPassword(), getAuthority((tenantInfo.getTenantRoleInfo().getRoleName()).trim()));
     }
 
-    private List<SimpleGrantedAuthority> getAuthority() {
-        return Arrays.asList(new SimpleGrantedAuthority("ADMIN"));
+    private List<SimpleGrantedAuthority> getAuthority(String roleName) {
+        return Arrays.asList(new SimpleGrantedAuthority("ROLE_" + roleName));
     }
 }

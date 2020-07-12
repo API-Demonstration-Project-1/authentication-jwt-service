@@ -41,4 +41,10 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
 	}
+	
+	/*
+	 * @Override protected void configure(HttpSecurity http) throws Exception {
+	 * http.authorizeRequests().anyRequest().authenticated().and().sessionManagement
+	 * () .sessionCreationPolicy(SessionCreationPolicy.NEVER); }
+	 */
 }
