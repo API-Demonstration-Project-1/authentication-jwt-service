@@ -7,8 +7,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.toystore.ecomm.authentication.model.TenantInfo;
-import com.toystore.ecomm.authentication.repository.TenantRepository;
+import com.toystore.ecomm.ptms.daorepo.model.TenantInfo;
+import com.toystore.ecomm.ptms.daorepo.repository.TenantRepository;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,10 +19,9 @@ public class JwtUserDetailsService implements UserDetailsService {
 	@Autowired
 	private TenantRepository tenantRepository;
 
-
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        TenantInfo tenantInfo = tenantRepository.findByTenantUsername(userName);
+        TenantInfo tenantInfo = tenantRepository.findByTenantUsername(userName).get(0);
         
         if(null == tenantInfo){
             throw new UsernameNotFoundException("Invalid user name or password.");

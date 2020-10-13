@@ -2,7 +2,10 @@ package com.toystore.ecomm.authentication;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
@@ -18,6 +21,8 @@ import java.util.Map;
 @EnableResourceServer
 @EnableEurekaClient
 @EnableAuthorizationServer
+@EntityScan(basePackages = {"com.toystore.ecomm.ptms.daorepo.model"})
+@EnableJpaRepositories("com.toystore.ecomm.ptms.daorepo.repository")
 public class Application {
     @RequestMapping(value = { "/user" }, produces = "application/json")
     public Map<String, Object> user(OAuth2Authentication user) {

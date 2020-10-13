@@ -8,8 +8,8 @@ import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 
-import com.toystore.ecomm.authentication.model.TenantInfo;
-import com.toystore.ecomm.authentication.repository.TenantRepository;
+import com.toystore.ecomm.ptms.daorepo.model.TenantInfo;
+import com.toystore.ecomm.ptms.daorepo.repository.TenantRepository;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +21,7 @@ public class JWTTokenEnhancer implements TokenEnhancer {
     @Override
     public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
     	String userName = ((User)authentication.getPrincipal()).getUsername();
-    	TenantInfo tenantInfo = tenantRepository.findByTenantUsername(userName);
+    	TenantInfo tenantInfo = tenantRepository.findByTenantUsername(userName).get(0);
     	
         Map<String, Object> additionalInfo = new HashMap<>();
 

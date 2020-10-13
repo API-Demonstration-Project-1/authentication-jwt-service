@@ -93,6 +93,14 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-jwt</artifactId>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.toystore.ecomm.ptms</groupId>
+			<artifactId>ptms-dao-repo</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/ptms-dao-repo.jar</systemPath>
+		</dependency>
 	</dependencies>
 
 	<properties>
