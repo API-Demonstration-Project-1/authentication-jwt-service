@@ -27,6 +27,8 @@ public class JWTTokenEnhancer implements TokenEnhancer {
 
         additionalInfo.put("db_url", tenantInfo.getTenantDBInfo().getTenantDBUrl());
         additionalInfo.put("db_name", tenantInfo.getTenantDBInfo().getTenantDBName());
+        additionalInfo.put("db_user", tenantInfo.getTenantDBInfo().getTenantDBUsername());
+        additionalInfo.put("db_pwd", tenantInfo.getTenantDBInfo().getTenantDBPassword());
 
         ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);
         
