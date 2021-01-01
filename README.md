@@ -5,8 +5,8 @@ JWT-based Authentication Service
 
 
 This service provides JWT based authentication services.
-  Get JWT
-  Validate JWT
+  * Get JWT
+  * Validate JWT
   
 -----------------------------------
 
